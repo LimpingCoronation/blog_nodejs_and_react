@@ -1,10 +1,24 @@
 import { Router } from "express";
-import UserController from "./user.controller";
 
-const userRouter = Router();
-const userController = new UserController();
+import { Request, Response } from "express";
+import DBServise from "../db/db.service";
 
-userRouter.post("/reg", userController.registration);
-userRouter.post("/login", userController.login);
+export default class AuthController {
+    public router: Router;
+    public db: DBServise;
 
-export default userRouter;
+    constructor(db: DBServise) {
+        this.router = Router();
+        this.db = db;
+        this.router.post("registration", this.registration);
+        this.router.get("login", this.login);
+    }
+
+    registration(req: Request, res: Response) {
+
+    }
+
+    login(req: Request, res: Response) {
+        
+    }
+}
